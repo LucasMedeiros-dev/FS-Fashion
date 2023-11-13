@@ -29,7 +29,7 @@
         {% for item in produtos %}
           <div class="col">
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{ item.img_produto.url }}" alt="Card image cap">
+                <img class="card-img-top" src="{{ item.img_produto.url }}" alt="Card image cap" style="object-fit: contain; height: 200px;">
                 <div class="card-body">
                   <h5 class="card-title">{{ item.nome }}</h5>
                   <p class="card-text">Marca: {{ item.marca }}
