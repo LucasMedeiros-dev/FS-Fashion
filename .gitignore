@@ -1,0 +1,5 @@
+/venv
+/static/
+.dbsqlite3
+[0-9][0-9][0-9][0-9]_initial.py
+**/__pycache__/

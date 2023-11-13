@@ -1,0 +1,12 @@
+{% extends "adminlte/base.html" %}
+
+{% block page_title %}Visão Geral{% endblock page_title %}
+
+{% block content_header %}Visão Geral{% endblock content_header %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="{% url "dashboard" %}">Início</a></li>
+<li class="breadcrumb-item active">Visão Geral</li>
+{% endblock breadcrumb %}
+
+{% block small_boxes %}{% include "adminlte/extras/dashboard_small_boxes.html" %}{% endblock small_boxes %}
