@@ -6,5 +6,6 @@ urlpatterns = [
     path('', views.Index.as_view(), name="dashboard"),
     path('login/', views.Login.as_view(), name="login"),
     path('logout/', views.LogoutView.as_view(), name="logout"),
-    path('produto/', include('apps.produtos.urls'), name="prod"),
+    path('marcas/', include('apps.marcas.urls'), name="marcas"),
+    path('produto/', include('apps.produtos.urls'), name="produto"),
 ]

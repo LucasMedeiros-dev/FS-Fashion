@@ -5,10 +5,30 @@ register = template.Library()
 
 
 @register.simple_tag
-def is_active(request, url_name):
-    """
-    Usage: {% is_active request "url_name" %}
-    Returns 'active' if the current request's path matches the given URL name.
-    """
-    current_url_name = resolve(request.path).url_name
-    return 'active' if current_url_name == url_name else ''
+def active_app(request, app_name):
+    current_url = request.path
+    resolved_view = resolve(current_url)
+
+    if resolved_view.app_name == app_name:
+        return 'active'
+    return ''
+
+
+@register.simple_tag
+def open_app(request, app_name):
+    current_url = request.path
+    resolved_view = resolve(current_url)
+
+    if resolved_view.app_name == app_name:
+        return 'menu-open'
+    return ''
+
+
+@register.simple_tag
+def active_view(request, app_name, view_name):
+    current_url = request.path
+    resolved_view = resolve(current_url)
+
+    if resolved_view.app_name == app_name and resolved_view.url_name == view_name:
+        return 'active'
+    return ''

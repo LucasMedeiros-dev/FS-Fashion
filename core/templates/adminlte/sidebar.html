@@ -2,8 +2,20 @@
 <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column nav-flat" data-widget="treeview" role="menu"
         data-accordion="false">
-        <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+        
+        <!-- Visão Geral menu item -->
+        <li class="nav-item">
+            <a href="{% url "dashboard" %}" class="nav-link {% active_app request '' %}">
+                <i class="fas fa-info nav-icon"></i>
+                <p>Visão Geral</p>
+            </a>
+        </li>
+
+        <!-- Other Produtos sub-items go here -->
+
+        <!-- Produtos menu item -->
+        <li class="nav-item {% open_app request 'produto' %}">
+            <a href="#" class="nav-link {% active_app request 'produto' %}">
                 <i class="nav-icon fas fa-chart-bar"></i>
                 <p>
                     Produtos
@@ -11,49 +23,42 @@
                 </p>
             </a>
             <ul class="nav nav-treeview">
-                <li class="nav-item menu">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fas fa-file-signature"></i>
-                        <p>
-                            Marcas
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{% url "dashboard" %}" class="nav-link {% is_active request 'x2' %}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Cadastrar Marcas</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                <!-- Existing Produtos sub-items go here -->
                 <li class="nav-item">
-                    <a href="{% url "dashboard" %}" class="nav-link {% is_active request 'dashboard' %}">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Visão Geral</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url "cadastro" %}" class="nav-link {% is_active request 'x1' %}">
+                    <a href="{% url "produto:estoque" %}" class="nav-link {% active_view request 'produto' 'estoque' %}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Estoque</p>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url "cadastro" %}" class="nav-link {% is_active request 'cadastro' %}">
+                    <a href="{% url "produto:cadastro" %}" class="nav-link {% active_view request 'produto' 'cadastro' %}">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Cadastro de Produtos</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url "cadastro" %}" class="nav-link {% is_active request 'x2' %}">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Cadastro de Produtos</p>
+                        <p>Cadastrar Produtos</p>
                     </a>
                 </li>
             </ul>
-        </li>  <!-- Close the Painel menu item -->
+        </li>
+
+        <!-- Close the Produtos menu item -->
+
+        <!-- Marcas menu item -->
+        <li class="nav-item menu {% open_app request 'marcas' %}">
+            <a href="#" class="nav-link {% active_app request 'marcas' %}">
+                <i class="nav-icon fas fas fa-file-signature"></i>
+                <p>
+                    Marcas
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{% url "marcas:cadastro" %}" class="nav-link {% active_view request 'marcas' 'cadastro' %}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Cadastrar Marcas</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Close the Marcas menu item -->
 
         <!-- Motoboys menu item -->
         <li class="nav-item">
@@ -65,19 +70,10 @@
                 </p>
             </a>
             <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{% url "dashboard" %}" class="nav-link {% is_active request 'x2' %}">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>TESTE2</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url "cadastro" %}" class="nav-link {% is_active request 'x1' %}">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>MOTOS</p>
-                    </a>
-                </li>
+                <!-- Existing Motoboys sub-items go here -->
             </ul>
         </li>
     </ul>
 </nav>
+
+

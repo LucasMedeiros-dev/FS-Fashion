@@ -1,0 +1,29 @@
+<div class="card card-primary">
+  <div class="card-header">
+    <h3 class="card-title">Cadastrar Marcas</h3>
+  </div>
+  <!-- /.card-header -->
+  <!-- form start -->
+  <form action="{% url "marcas:cadastro" %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="card-body">
+      <div class="form-group">
+        <label for="marca_nome">{{ form.nome.label_tag }}</label>
+        {{ form.nome }}
+      </div>
+      <div class="form-group">
+        <label for="img_marca">{{ form.img_marca.label_tag }}</label>
+        <div class="input-group">
+          <div class="custom-file">
+            {{ form.img_marca }}
+            <label class="custom-file-label" for="img_marca">Selecione uma imagem</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </div>
+  </form>
+</div>

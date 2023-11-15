@@ -1,4 +1,5 @@
 from django import forms
+from apps.marcas.models import Marca
 
 
 class ProdutoCadastro(forms.Form):
@@ -8,10 +9,12 @@ class ProdutoCadastro(forms.Form):
         widget=forms.TextInput(
             attrs={'autofocus': True, 'class': 'form-control', 'placeholder': 'Insira o Nome do Produto'}))
 
-    marca = forms.CharField(
+    marca = forms.ModelChoiceField(
+        empty_label=None,
+        queryset=Marca.objects.all(),
         label="Marca",
-        max_length=120, required=True,
-        widget=forms.TextInput(
+        required=True,
+        widget=forms.Select(
             attrs={'class': 'form-control', 'placeholder': 'Teste'}))
 
     qntd_max = forms.IntegerField(
