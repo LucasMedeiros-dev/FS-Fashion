@@ -1,10 +1,12 @@
 from django.db import models
-
+from apps.fornecedores.models import Fornecedor
 # Create your models here.
 
 
 class Marca(models.Model):
     nome = models.CharField(max_length=120, blank=False)
+    fornecedores = models.ManyToManyField(
+        Fornecedor, related_name='marcas', blank=False)
     img_marca = models.ImageField(upload_to="static/marcas/")
     adicionado = models.DateTimeField(auto_now_add=True)
 

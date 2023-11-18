@@ -16,7 +16,7 @@
         <!-- Produtos menu item -->
         <li class="nav-item {% open_app request 'produto' %}">
             <a href="#" class="nav-link {% active_app request 'produto' %}">
-                <i class="nav-icon fas fa-chart-bar"></i>
+                <i class="nav-icon fas fa-tshirt"></i>
                 <p>
                     Produtos
                     <i class="right fas fa-angle-left"></i>
@@ -50,6 +50,12 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
+                    <a href="{% url "marcas:lista" %}" class="nav-link {% active_view request 'marcas' 'lista' %}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Listar Marcas</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{% url "marcas:cadastro" %}" class="nav-link {% active_view request 'marcas' 'cadastro' %}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Cadastrar Marcas</p>
@@ -59,11 +65,58 @@
         </li>
 
         <!-- Close the Marcas menu item -->
-
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-truck"></i>
+                <p>
+                    Fornecedores
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <!-- Existing Motoboys sub-items go here -->
+                <li class="nav-item">
+                    <a href="{% url "marcas:lista" %}" class="nav-link {% active_view request 'marcas' 'lista' %}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Listar Fornecedores</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url "marcas:cadastro" %}" class="nav-link {% active_view request 'marcas' 'cadastro' %}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Cadastrar Fornecedor</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                    Vendedores
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <!-- Existing Motoboys sub-items go here -->
+                <li class="nav-item">
+                    <a href="{% url "marcas:lista" %}" class="nav-link {% active_view request 'marcas' 'lista' %}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Listar Vendedores</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url "marcas:cadastro" %}" class="nav-link {% active_view request 'marcas' 'cadastro' %}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Cadastrar Vendedor</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
         <!-- Motoboys menu item -->
         <li class="nav-item">
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-chart-bar"></i>
+                <i class="nav-icon fas fa-motorcycle"></i>
                 <p>
                     Motoboys
                     <i class="right fas fa-angle-left"></i>
@@ -71,6 +124,18 @@
             </a>
             <ul class="nav nav-treeview">
                 <!-- Existing Motoboys sub-items go here -->
+                <li class="nav-item">
+                    <a href="{% url "marcas:lista" %}" class="nav-link {% active_view request 'marcas' 'lista' %}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Listar Colaboradores</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url "marcas:cadastro" %}" class="nav-link {% active_view request 'marcas' 'cadastro' %}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Cadastrar Colaborador</p>
+                    </a>
+                </li>
             </ul>
         </li>
     </ul>

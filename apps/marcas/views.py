@@ -16,8 +16,3 @@ class MarcaListView(generic.list.ListView):
     model = Marca
     paginate_by = 100  # if pagination is desired
     context_object_name = 'marcas'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        print(context)
-        return context

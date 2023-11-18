@@ -1,0 +1,79 @@
+<div class="card card-solid">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12 col-sm-6">
+          <h3 class="d-inline-block d-sm-none">{{ produto.nome }}</h3>
+          <div class="col-12">
+            <img src="{{ produto.img_produto.url }}" class="product-image" alt="Product Image" style="object-fit: contain; height: 425px;">
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <h3 class="my-3">{{ produto.nome }}</h3>
+          </h4>Marca: <strong>{{ produto.marca }}</strong></h4>
+
+          <hr>
+
+          <h4 class="mt-3">Tamanhos <small>e qantidades disponíveis</small></h4>
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-default text-center {% if produto.qtd_tam_p %}{% else %}disabled{% endif %}">
+              <input type="radio" name="color_option" id="color_option_b1" autocomplete="off">
+              <span class="text-xl">P</span>
+              <br>
+              {% if produto.qtd_tam_p %}
+              {{ produto.qtd_tam_p }}
+              {% else %}
+              Acabou
+              {% endif %}
+            </label>
+            <label class="btn btn-default text-center {% if produto.qtd_tam_m %}{% else %}disabled{% endif %}">
+              <input type="radio" name="color_option" id="color_option_b2" autocomplete="off">
+              <span class="text-xl">M</span>
+              <br>
+              {% if produto.qtd_tam_m %}
+              {{ produto.qtd_tam_m }}
+              {% else %}
+              Acabou
+              {% endif %}
+            </label>
+            <label class="btn btn-default text-center {% if produto.qtd_tam_g %}{% else %}disabled{% endif %}">
+              <input type="radio" name="color_option" id="color_option_b3" autocomplete="off">
+              <span class="text-xl">G</span>
+              <br>
+              {% if produto.qtd_tam_g %}
+              {{ produto.qtd_tam_g }}
+              {% else %}
+              Acabou
+              {% endif %}
+            </label>
+            <label class="btn btn-default text-center {% if produto.qtd_tam_gg %}{% else %}disabled{% endif %}">
+              <input type="radio" name="color_option" id="color_option_b4" autocomplete="off">
+              <span class="text-xl">GG</span>
+              <br>
+              {% if produto.qtd_tam_gg %}
+              {{ produto.qtd_tam_gg }}
+              {% else %}
+              Acabou
+              {% endif %}
+            </label>
+          </div>
+          
+          <hr>
+          
+          <h4 class="mt-3">Estoque</h4>
+          <div class="produtc_min_max">
+            <p>
+              <strong>Quantidade Máxima: {{produto.qntd_max}}</strong>
+              <br>
+              <strong>Quantidade Mínima: {{produto.qntd_min}}</strong>
+            </p>
+          </div>
+          <hr>
+          <div class="btn" role="group" aria-label="Botões de acesso">
+          <button type="button" class="btn btn-primary btn-lg">Editar</button>
+          <button type="button" class="btn btn-primary btn-lg">Vender</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.card-body -->
+  </div>

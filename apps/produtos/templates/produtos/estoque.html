@@ -40,7 +40,7 @@
                     {% if item.qtd_tam_gg %}<button type="button" class="btn btn-outline-secondary btn-sm-smaller">GG</button>{% endif %}
                     </br>
                 </p>
-                  <a href="#" class="btn btn-primary">Abrir</a>
+                  <a href="{% url "produto:detalhe" pk=item.id %}" class="btn btn-primary">Abrir</a>
                 </div>
               </div>
           </div>
@@ -54,8 +54,8 @@
                     <h5 class="card-title"><strong>Nenhum Produto Cadastrado.<strong></h5>
                 </div>
                   <div class="card-footer">
-                    <a href="#" class="btn btn-danger" role="button">Voltar</a>
-                    <a href="#" class="btn btn-success" role="button">Cadastrar Produto</a>
+                    <a href="{% url "dashboard" %}" class="btn btn-danger" role="button">Voltar</a>
+                    <a href="{% url "produto:cadastro" %}" class="btn btn-success" role="button">Cadastrar Produto</a>
                 </div>
             </div>
         </div>

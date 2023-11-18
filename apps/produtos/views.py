@@ -1,7 +1,15 @@
+from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
+from barcode.writer import ImageWriter
+from barcode import EAN13
+from PIL import Image
+from io import BytesIO
+from hashlib import md5
+import base64
+import uuid
 from . import forms
 from . import models
 # Create your views here.
@@ -33,3 +41,8 @@ class EstoqueProd(generic.ListView):
     form_class = forms.ProdutoCadastro
     queryset = models.Produto.objects.all()
     context_object_name = "produtos"
+
+
+class ProdutoDetail(generic.detail.DetailView):
+    template_name = 'produtos/detalhe.html'
+    model = models.Produto

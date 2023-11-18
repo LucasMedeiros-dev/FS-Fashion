@@ -1,0 +1,20 @@
+
+{% extends "adminlte/base.html" %}
+
+{% block page_title %}Marcas{% endblock page_title %}
+
+{% block content_header %}Marcas Cadastradas{% endblock content_header %}
+
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{% url "dashboard" %}">Início</a></li>
+    <li class="breadcrumb-item"><a href="{% url "produto:estoque" %}">Estoque</a></li>
+    <li class="breadcrumb-item active">Detalhe</li>
+{% endblock breadcrumb %}
+
+{% block custom_style %}
+{% endblock custom_style %}
+
+{% block content %}
+  {% include "produtos/extras/detalhe_content.html" %}
+{% endblock content %}
