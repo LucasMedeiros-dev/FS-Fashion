@@ -9,7 +9,8 @@
         </div>
         <div class="col-12 col-sm-6">
           <h3 class="my-3">{{ produto.nome }}</h3>
-          </h4>Marca: <strong>{{ produto.marca }}</strong></h4>
+          </h4>Marca: <strong>{{ produto.marca }}</strong></h4><br/>
+          </h4>Código: <strong>{{ produto.id }}</strong></h4>
 
           <hr>
 
@@ -69,8 +70,9 @@
           </div>
           <hr>
           <div class="btn" role="group" aria-label="Botões de acesso">
-          <button type="button" class="btn btn-primary btn-lg">Editar</button>
-          <button type="button" class="btn btn-primary btn-lg">Vender</button>
+          <a href="{% url 'produto:atualizar' pk=produto.id %}" class="btn btn-success btn-lg">Vender</a>
+          <a href="{% url 'produto:atualizar' pk=produto.id %}" class="btn btn-info btn-lg">Editar</a>
+          <a href="{% url 'produto:excluir' pk=produto.id %}" class="btn btn-danger btn-lg">Excluir</a>
           </div>
         </div>
       </div>

@@ -138,6 +138,30 @@
                 </li>
             </ul>
         </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-user-circle"></i>
+                <p>
+                    Clientes
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <!-- Existing Motoboys sub-items go here -->
+                <li class="nav-item">
+                    <a href="{% url "marcas:lista" %}" class="nav-link {% active_view request 'marcas' 'lista' %}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Listar de Clientes</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url "marcas:cadastro" %}" class="nav-link {% active_view request 'marcas' 'cadastro' %}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Cadastrar Cliente</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
     </ul>
 </nav>
 

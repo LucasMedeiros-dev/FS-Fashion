@@ -1,0 +1,30 @@
+<div class="card card-solid">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12 col-sm-6">
+          <h3 class="d-inline-block d-sm-none">{{ marca.nome }}</h3>
+          <div class="col-12">
+            <img src="{{ marca.img_marca.url }}" class="product-image" alt="Product Image" style="object-fit: contain; height: 425px;">
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <h3 class="my-3">{{ marca.nome }}</h3>
+          
+          {% if marca.fornecedores.count == 1 %}
+            <h4>Fornecedor: <strong>{{ marca.fornecedores.first.empresa }}</strong></h4><br/>
+          {% else %}
+            {% for fornecedor in marca.fornecedores.all %}
+              <h4>Fornecedores: <strong>{{ fornecedor.empresa }}</strong></h4><br/>
+            {% endfor %}
+          {% endif %}
+
+          <div class="btn" role="group" aria-label="Botões de acesso">
+          
+          <a href="{% url 'marcas:atualizar' pk=marca.id %}" class="btn btn-info btn-lg">Editar</a>
+          <a href="{% url 'marcas:excluir' pk=marca.id %}" class="btn btn-danger btn-lg">Excluir</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.card-body -->
+  </div>

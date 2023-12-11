@@ -1,0 +1,61 @@
+<div class="card card-primary">
+  <div class="card-header">
+    <h3 class="card-title">Ataulizar Produtos</h3>
+  </div>
+  <!-- /.card-header -->
+  <!-- form start -->
+  <form action="{% url 'produto:atualizar' pk=produto.id %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="card-body">
+      <div class="form-group">
+        <label for="prod_nome">{{ form.nome.label_tag }}</label>
+        {{ form.nome }}
+      </div>
+      <div class="form-group">
+        <label for="prod_marca">{{ form.marca.label_tag }}</label>
+        {{ form.marca }}
+      </div>
+      <div class="form-group">
+        <label for="prod_image">{{ form.img_produto.label_tag }}</label>
+        <div class="input-group">
+          <div class="custom-file">
+            {{ form.img_produto }}
+            <label class="custom-file-label" for="prod_image">Selecione uma imagem</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm">
+          <label for="prod_qntd_max">{{ form.qntd_max.label_tag }}</label>
+          {{ form.qntd_max }}
+        </div>
+        <div class="form-group col-sm">
+          <label for="prod_qntd_min">{{ form.qntd_min.label_tag }}</label>
+          {{ form.qntd_min }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm">
+          <label for="prod_qtd_tam_p">{{ form.qtd_tam_p.label_tag }}</label>
+          {{ form.qtd_tam_p }}
+        </div>
+        <div class="form-group col-sm">
+          <label for="prod_qtd_tam_m">{{ form.qtd_tam_m.label_tag }}</label>
+          {{ form.qtd_tam_m }}
+        </div>
+        <div class="form-group col-sm">
+          <label for="prod_qtd_tam_g">{{ form.qtd_tam_g.label_tag }}</label>
+          {{ form.qtd_tam_g }}
+        </div>
+        <div class="form-group col-sm">
+          <label for="prod_qtd_tam_gg">{{ form.qtd_tam_gg.label_tag }}</label>
+          {{ form.qtd_tam_gg }}
+        </div>
+      </div>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </div>
+  </form>
+</div>

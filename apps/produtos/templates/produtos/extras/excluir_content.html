@@ -1,0 +1,21 @@
+<div class="card card-solid">
+    <div class="card-header bg-danger">
+      <h3 class="card-title danger">Excluir Produto</h3>
+    </div>
+    <div class="card-body">
+      <form method="post">
+        {% csrf_token %}
+        <p> Tem certeza que deseja remover: <b>{{ produto.nome }}</b> da Marca <b>{{ produto.marca }}</b>. </p>
+        <hr>
+        <div aria-label="Button group with two buttons">
+          <button type="submit" class="btn btn-danger">Remover</button>
+          <a href="{% url 'produto:detalhe' pk=produto.id %}" class="btn btn-primary">Voltar</a>
+        </div>
+      </form>
+    </div>
+    <!-- /.card-body -->
+  </div>
+       
+</div>
+<!-- /.card -->
+

@@ -1,15 +1,6 @@
-from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
-from barcode.writer import ImageWriter
-from barcode import EAN13
-from PIL import Image
-from io import BytesIO
-from hashlib import md5
-import base64
-import uuid
 from . import forms
 from . import models
 # Create your views here.
@@ -35,14 +26,33 @@ class CadastrarProd(generic.FormView):
         return super().form_valid(form)
 
 
+class AtualizarProd(generic.UpdateView):
+    template_name = "produtos/atualizacao.html"
+    form_class = forms.ProdutoAtualizacao
+    success_url = reverse_lazy('produto:estoque')
+    model = models.Produto
+
+
 class EstoqueProd(generic.ListView):
     paginate_by = 10
     template_name = "produtos/estoque.html"
     form_class = forms.ProdutoCadastro
-    queryset = models.Produto.objects.all()
     context_object_name = "produtos"
+
+    def get_queryset(self):
+        query = self.request.GET.get('buscar')
+        queryset = models.Produto.objects.all()
+        if query:
+            queryset = queryset.filter(id=query)
+        return queryset
 
 
 class ProdutoDetail(generic.detail.DetailView):
     template_name = 'produtos/detalhe.html'
     model = models.Produto
+
+
+class ExlcuirConfirm(generic.DeleteView):
+    template_name = 'produtos/excluir.html'
+    model = models.Produto
+    success_url = reverse_lazy('produto:estoque')

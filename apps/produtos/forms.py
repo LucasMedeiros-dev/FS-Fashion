@@ -1,5 +1,6 @@
 from django import forms
 from apps.marcas.models import Marca
+from apps.produtos.models import Produto
 
 
 class ProdutoCadastro(forms.Form):
@@ -54,3 +55,21 @@ class ProdutoCadastro(forms.Form):
         widget=forms.FileInput(
             attrs={'class': 'custom-file-input'}
         ))
+
+
+class ProdutoAtualizacao(forms.ModelForm):
+    class Meta:
+        model = Produto
+        fields = ['nome', 'marca', 'qntd_max', 'qntd_min', 'qtd_tam_p',
+                  'qtd_tam_m', 'qtd_tam_g', 'qtd_tam_gg', 'img_produto']
+        widgets = {
+            'nome': forms.TextInput(attrs={'autofocus': True, 'class': 'form-control', 'placeholder': 'Insira o Nome do Produto'}),
+            'marca': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Teste'}),
+            'qntd_max': forms.NumberInput(attrs={'class': 'form-control'}),
+            'qntd_min': forms.NumberInput(attrs={'class': 'form-control'}),
+            'qtd_tam_p': forms.NumberInput(attrs={'class': 'form-control'}),
+            'qtd_tam_m': forms.NumberInput(attrs={'class': 'form-control'}),
+            'qtd_tam_g': forms.NumberInput(attrs={'class': 'form-control'}),
+            'qtd_tam_gg': forms.NumberInput(attrs={'class': 'form-control'}),
+            'img_produto': forms.FileInput(attrs={'class': 'custom-file-input'}),
+        }

@@ -23,7 +23,7 @@
                 <div class="card-body">
                   <h5 class="card-title">{{ item.nome }}</h5>
                   <p class="card-text">Data de Cadastro: {{ item.adicionado }}</p>
-                  <a href="#" class="btn btn-primary">Abrir</a>
+                  <a href={% url "marcas:detalhe" pk=item.id %} class="btn btn-primary">Abrir</a>
                 </div>
               </div>
           </div>

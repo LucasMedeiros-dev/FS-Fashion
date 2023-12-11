@@ -1,0 +1,19 @@
+{% extends "adminlte/base.html" %}
+
+{% block page_title %}Excluir Marca{% endblock page_title %}
+
+{% block content_header %}Excluir Marca{% endblock content_header %}
+
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{% url "dashboard" %}">Início</a></li>
+    <li class="breadcrumb-item"><a href="{% url "marca:lista" %}">Marcas</a></li>
+    <li class="breadcrumb-item active">Excluir</li>
+{% endblock breadcrumb %}
+
+{% block custom_style %}
+{% endblock custom_style %}
+
+{% block content %}
+  {% include "marcas/extras/excluir_content.html" %}
+{% endblock content %}

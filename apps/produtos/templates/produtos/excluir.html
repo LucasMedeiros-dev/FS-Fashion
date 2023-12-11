@@ -1,19 +1,19 @@
 {% extends "adminlte/base.html" %}
 
-{% block page_title %}Produtos{% endblock page_title %}
+{% block page_title %}Excluir Produto{% endblock page_title %}
 
-{% block content_header %}Produtos Cadastrados{% endblock content_header %}
+{% block content_header %}Excluir Produto{% endblock content_header %}
 
 
 {% block breadcrumb %}
     <li class="breadcrumb-item"><a href="{% url "dashboard" %}">Início</a></li>
     <li class="breadcrumb-item"><a href="{% url "produto:estoque" %}">Estoque</a></li>
-    <li class="breadcrumb-item active">Detalhe</li>
+    <li class="breadcrumb-item active">Excluir</li>
 {% endblock breadcrumb %}
 
 {% block custom_style %}
 {% endblock custom_style %}
 
 {% block content %}
-  {% include "produtos/extras/detalhe_content.html" %}
+  {% include "produtos/extras/excluir_content.html" %}
 {% endblock content %}
