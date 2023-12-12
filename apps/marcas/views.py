@@ -32,6 +32,6 @@ class MarcaUpdateView(generic.edit.UpdateView):
 
 
 class MarcaDeleteView(generic.edit.DeleteView):
-    template_name = 'marcas/deletar.html'
+    template_name = 'marcas/excluir.html'
     model = Marca
     success_url = reverse_lazy('marcas:lista')  # redirect URL after deletion

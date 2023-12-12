@@ -1,0 +1,56 @@
+{% extends "adminlte/base.html" %}
+
+{% block page_title %}Marcas{% endblock page_title %}
+
+{% block content_header %}Marcas Cadastradas{% endblock content_header %}
+
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{% url "dashboard" %}">Início</a></li>
+    <li class="breadcrumb-item active">Marcas</li>
+{% endblock breadcrumb %}
+
+{% block custom_style %}
+{% endblock custom_style %}
+
+{% block content %}
+    <div class="container">
+      <div class="row"> 
+        {% for item in fornecedores %}
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title">Nome: {{ item.nome }}</h5>
+              <p class="card-text">Empresa: {{ item.empresa }}</p>
+              <p class="card-text">CNPJ: {{ item.cnpj }}</p>
+              <p class="card-text">Email: {{ item.email }}</p>
+              <p class="card-text">Telefone: {{ item.telefone }}</p>
+              {% if item.telefone_zap %}
+                <p class="card-text">Telefone Zap: Sim</p>
+              {% else %}
+                <p class="card-text">Telefone Zap: Não</p>
+              {% endif %}
+              <p class="card-text">Data de Cadastro: {{ item.adicionado }}</p>
+              <a href="{% url 'marcas:detalhe' pk=item.id %}" class="btn btn-primary">Abrir</a>
+            </div>
+          </div>
+        {% empty %}
+        <div class="col-sm">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Cadastrar Produtos</h3>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"><strong>Nenhum Produto Cadastrado.<strong></h5>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="btn btn-danger" role="button">Voltar</a>
+              <a href="#" class="btn btn-success" role="button">Cadastrar Produto</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+{% endblock content %}
+
+

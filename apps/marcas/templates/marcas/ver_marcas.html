@@ -15,17 +15,21 @@
 
 {% block content %}
     <div class="container">
-        <div class="row">
+        <div class="row"> 
         {% for item in marcas %}
-          <div class="col">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{ item.img_marca.url }}" alt="Card image cap" style="object-fit: contain; height: 200px;">
+          <div class="card mb-3">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img src="{{ item.img_marca.url }}" class="card-img" alt="Imagem da Marca">
+              </div>
+              <div class="col-md-8">
                 <div class="card-body">
                   <h5 class="card-title">{{ item.nome }}</h5>
                   <p class="card-text">Data de Cadastro: {{ item.adicionado }}</p>
-                  <a href={% url "marcas:detalhe" pk=item.id %} class="btn btn-primary">Abrir</a>
+                  <a href="{% url 'marcas:detalhe' pk=item.id %}" class="btn btn-primary">Abrir</a>
                 </div>
               </div>
+            </div>
           </div>
         {% empty %}
         <div class="col-sm">

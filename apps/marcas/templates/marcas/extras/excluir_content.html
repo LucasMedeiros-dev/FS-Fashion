@@ -5,17 +5,19 @@
     <div class="card-body">
       <form method="post">
         {% csrf_token %}
-        <p> Tem certeza que deseja remover: <b>{{ produto.nome }}</b> da Marca <b>{{ produto.marca }}</b>. </p>
+        <p> Tem certeza que deseja remover: <b>{{ marca.nome }}</b></p>
         <hr>
         <div aria-label="Button group with two buttons">
           <button type="submit" class="btn btn-danger">Remover</button>
-          <a href="{% url 'produto:detalhe' pk=produto.id %}" class="btn btn-primary">Voltar</a>
+          <a href="{% url 'marcas:detalhe' pk=marca.id %}" class="btn btn-primary">Voltar</a>
         </div>
       </form>
     </div>
     <!-- /.card-body -->
   </div>
-       
+  <div class="alert alert-secondary" role="alert">
+  <b>IMPORTANTE:</b> Excluir uma marca também exclui todos os seus produtos.
+  </div>
 </div>
 <!-- /.card -->
 
