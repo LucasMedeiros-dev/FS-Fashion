@@ -1,0 +1,17 @@
+{% extends "adminlte/base.html" %}
+
+
+{% block page_title %}Atualização de Fornecedores{% endblock page_title %}
+
+{% block content_header %}Atualização de Fornecedor{% endblock content_header %}
+
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{% url "dashboard" %}">Início</a></li>
+    <li class="breadcrumb-item active">Atualização De Fornecedores</li>
+{% endblock breadcrumb %}
+
+{% block content %}
+    {% include "fornecedores/extras/atualizar_content.html" %}
+{% endblock content %}
+

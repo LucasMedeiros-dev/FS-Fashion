@@ -1,10 +1,10 @@
 <div class="card card-primary">
   <div class="card-header">
-    <h3 class="card-title">Cadastrar Fornecedor</h3>
+    <h3 class="card-title">Atualizar Marcas</h3>
   </div>
   <!-- /.card-header -->
   <!-- form start -->
-  <form action="{% url 'fornecedor:cadastro' %}" method="post" enctype="multipart/form-data">
+  <form action="{% url 'fornecedor:atualizar' pk=form.instance.pk %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="card-body">
       <div class="form-group">
@@ -36,7 +36,6 @@
             </div>
         {% endif %}
     </div>
-    
     </div>
     <!-- /.card-body -->
     <div class="card-footer">

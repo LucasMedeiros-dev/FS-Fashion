@@ -2,16 +2,18 @@
 
 {% block page_title %}Fornecedores{% endblock page_title %}
 
-{% block content_header %}Fornecedores Cadastradas{% endblock content_header %}
+{% block content_header %}Detalhes do Fornecedor{% endblock content_header %}
+
 
 {% block breadcrumb %}
     <li class="breadcrumb-item"><a href="{% url "dashboard" %}">Início</a></li>
-    <li class="breadcrumb-item active">Fornecedores</li>
+    <li class="breadcrumb-item"><a href="{% url "fornecedor:lista" %}">Fornecedores</a></li>
+    <li class="breadcrumb-item active">Detalhe</li>
 {% endblock breadcrumb %}
 
 {% block custom_style %}
 {% endblock custom_style %}
 
 {% block content %}
-  {% include "fornecedores/extras/lista_content.html" %}
+  {% include "fornecedores/extras/detalhe_content.html" %}
 {% endblock content %}

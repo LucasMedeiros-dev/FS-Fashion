@@ -1,0 +1,19 @@
+{% extends "adminlte/base.html" %}
+
+{% block page_title %}Excluir Fornecedor{% endblock page_title %}
+
+{% block content_header %}Excluir Fornecedor{% endblock content_header %}
+
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{% url "dashboard" %}">Início</a></li>
+    <li class="breadcrumb-item"><a href="{% url "fornecedor:lista" %}">Fornecedores</a></li>
+    <li class="breadcrumb-item active">Excluir</li>
+{% endblock breadcrumb %}
+
+{% block custom_style %}
+{% endblock custom_style %}
+
+{% block content %}
+  {% include "fornecedores/extras/excluir_content.html" %}
+{% endblock content %}

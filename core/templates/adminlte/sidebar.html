@@ -89,8 +89,8 @@
                 </li>
             </ul>
         </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
+        <li class="nav-item {% open_app request 'vendedor' %}">
+            <a href="#" class="nav-link {% active_app request 'vendedor' %}">
                 <i class="nav-icon fas fa-users"></i>
                 <p>
                     Vendedores
@@ -100,13 +100,13 @@
             <ul class="nav nav-treeview">
                 <!-- Existing Motoboys sub-items go here -->
                 <li class="nav-item">
-                    <a href="{% url "marcas:lista" %}" class="nav-link {% active_view request 'marcas' 'lista' %}">
+                    <a href="{% url "vendedor:lista" %}" class="nav-link {% active_view request 'vendedor' 'lista' %}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Listar Vendedores</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{% url "marcas:cadastro" %}" class="nav-link {% active_view request 'marcas' 'cadastro' %}">
+                    <a href="{% url "vendedor:cadastro" %}" class="nav-link {% active_view request 'vendedor' 'cadastro' %}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Cadastrar Vendedor</p>
                     </a>

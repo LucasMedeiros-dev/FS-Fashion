@@ -35,14 +35,14 @@
         <div class="col-sm">
             <div class="card card-primary">
                 <div class="card-header">
-                  <h3 class="card-title">Cadastrar Produtos</h3>
+                  <h3 class="card-title">Cadastrar Marcas</h3>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title"><strong>Nenhum Produto Cadastrado.<strong></h5>
+                    <h5 class="card-title"><strong>Nenhuma Marca Cadastrada.<strong></h5>
                 </div>
                   <div class="card-footer">
-                    <a href="#" class="btn btn-danger" role="button">Voltar</a>
-                    <a href="#" class="btn btn-success" role="button">Cadastrar Produto</a>
+                    <a href={% url "dashboard" %} class="btn btn-danger" role="button">Voltar</a>
+                    <a href={% url "marcas:cadastro" %} class="btn btn-success" role="button">Cadastrar Produto</a>
                 </div>
             </div>
         </div>

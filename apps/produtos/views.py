@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views import generic
@@ -6,7 +7,7 @@ from . import models
 # Create your views here.
 
 
-class CadastrarProd(generic.FormView):
+class CadastrarProd(LoginRequiredMixin, generic.FormView):
     template_name = "produtos/cadastro.html"
     form_class = forms.ProdutoCadastro
     success_url = reverse_lazy('dashboard')
@@ -26,16 +27,16 @@ class CadastrarProd(generic.FormView):
         return super().form_valid(form)
 
 
-class AtualizarProd(generic.UpdateView):
+class AtualizarProd(LoginRequiredMixin, generic.UpdateView):
     template_name = "produtos/atualizacao.html"
-    form_class = forms.ProdutoAtualizacao
+    form_class = forms.ProdutoCadastro
     success_url = reverse_lazy('produto:estoque')
     model = models.Produto
 
 
-class EstoqueProd(generic.ListView):
+class EstoqueProd(LoginRequiredMixin, generic.ListView):
     paginate_by = 10
-    template_name = "produtos/estoque.html"
+    template_name = "produtos/produto.html"
     form_class = forms.ProdutoCadastro
     context_object_name = "produtos"
 
@@ -47,12 +48,12 @@ class EstoqueProd(generic.ListView):
         return queryset
 
 
-class ProdutoDetail(generic.detail.DetailView):
+class ProdutoDetail(LoginRequiredMixin, generic.detail.DetailView):
     template_name = 'produtos/detalhe.html'
     model = models.Produto
 
 
-class ExlcuirConfirm(generic.DeleteView):
+class ExlcuirConfirm(LoginRequiredMixin, generic.DeleteView):
     template_name = 'produtos/excluir.html'
     model = models.Produto
     success_url = reverse_lazy('produto:estoque')

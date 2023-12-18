@@ -53,11 +53,11 @@ class FornecedorForm(forms.ModelForm):
                    'placeholder': 'Insira o Telefone', 'id': 'fornecedor_telefone'}
         )
     )
-    telefone_zap = forms.BooleanField(
-        label="Telefone (WhatsApp)",
+    telefone_zap = forms.ChoiceField(
+        label="Telefone (WhatsApp):",
+        choices=[(True, 'Sim'), (False, 'Não')],
         required=False,
-        widget=forms.CheckboxInput(
-            attrs={'class': 'form-check-input',
-                   'id': 'fornecedor_telefone_zap'}
+        widget=forms.Select(
+            attrs={'class': 'form-control', 'id': 'fornecedor_telefone_zap'}
         )
     )

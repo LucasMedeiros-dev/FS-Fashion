@@ -1,12 +1,13 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LogoutView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from django.urls import reverse_lazy
 from . import forms
 # Create your views here.
 
 
-class Index(generic.TemplateView):
+class Index(LoginRequiredMixin, generic.TemplateView):
     template_name = "adminlte/index.html"
 
 

@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        {% for item in vendedores %}
+        <!-- Each card taking up 4 columns -->
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Nome: {{ item.nome }}</h5>
+                    <p class="card-text">CPF: {{ item.cpf }}</p>
+                    <p class="card-text">Email: {{ item.email }}</p>
+                    <p class="card-text">Data de Cadastro: {{ item.adicionado }}</p>
+                    <a href="{% url 'vendedor:detalhe' pk=item.id %}" class="btn btn-primary">Abrir</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-sm-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Cadastrar Vendedor</h3>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"><strong>Nenhum Vendedor Cadastrado.<strong></h5>
+                </div>
+                <div class="card-footer">
+                    <a href={% url "dashboard" %} class="btn btn-danger" role="button">Voltar</a>
+                    <a href={% url "vendedor:cadastro" %} class="btn btn-success" role="button">Cadastrar Vendedor</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
