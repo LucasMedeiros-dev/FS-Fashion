@@ -21,7 +21,7 @@ class BrazilianCellPhoneField(models.CharField):
 class Fornecedor(models.Model):
     nome = models.CharField(max_length=120)
     empresa = models.CharField(max_length=120)
-    cnpj = BRCNPJField()
+    cnpj = BRCNPJField(unique=True)
     email = models.EmailField(max_length=254)
     telefone = BrazilianCellPhoneField(blank=True)
     telefone_zap = models.BooleanField(default=False)

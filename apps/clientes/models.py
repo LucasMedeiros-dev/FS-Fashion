@@ -21,8 +21,13 @@ class BrazilianCellPhoneField(models.CharField):
 class Cliente(models.Model):
     nome = models.CharField(verbose_name="Nome", max_length=50)
     sobrenome = models.CharField(verbose_name="Sobrenome", max_length=50)
-    cpf = BRCPFField(verbose_name="CPF")
+    cpf = BRCPFField(verbose_name="CPF", unique=True)
     nascimento = models.DateField(verbose_name="Data de Nascimento")
-    telefone = BrazilianCellPhoneField(verbose_name="Celular")
+    email = models.EmailField(verbose_name="Email", max_length=254, blank=True)
+    telefone = BrazilianCellPhoneField(verbose_name="Celular", blank=True)
     telefone_zap = models.BooleanField(verbose_name="Whatsapp")
-    endereço = models.TextField(verbose_name="Endereço")
+    endereco = models.TextField(verbose_name="Endereço")
+    cadastro = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.cpf} - {self.nome} {self.sobrenome}"

@@ -1,22 +1,35 @@
 {% extends "adminlte/base.html" %}
 
 
-{% block page_title %}Cadastro de Vendedores{% endblock page_title %}
+{% block page_title %}Cadastro de Clientes{% endblock page_title %}
 
-{% block content_header %}Cadastro de Vendedores{% endblock content_header %}
+{% block content_header %}Cadastro de Clientes{% endblock content_header %}
 
 
 {% block breadcrumb %}
     <li class="breadcrumb-item"><a href="{% url "dashboard" %}">Início</a></li>
-    <li class="breadcrumb-item active">Cadastro De Vendedores</li>
+    <li class="breadcrumb-item active">Cadastro De Clientes</li>
 {% endblock breadcrumb %}
 
 {% block content %}
-    {% include "vendedores/extras/cadastro_content.html" %}
+    {% include "clientes/extras/cadastro_content.html" %}
 {% endblock content %}
 
+{% block scripts %}
+    $(document).ready(function(){
+        $('.date-range-picker').daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: true,
+            locale: {
+                format: 'DD/MM/YYYY'  // Adjust the format as needed
+            }
+            // Other daterangepicker options as required
+        });
+    });        
+{% endblock scripts %}
+
 {% block scripts_multiple %}<script>
-    document.getElementById('cpf').addEventListener('input', function(e) {
+    document.getElementById('cliente_cpf').addEventListener('input', function(e) {
         var input = e.target.value;
         var formattedInput = input;
     

@@ -17,8 +17,16 @@ class CadastrarMarca(LoginRequiredMixin, generic.edit.CreateView):
 class MarcaListView(LoginRequiredMixin, generic.list.ListView):
     template_name = 'marcas/ver_marcas.html'
     model = Marca
-    paginate_by = 100  # if pagination is desired
     context_object_name = 'marcas'
+
+    def get_queryset(self):
+        nome = self.request.GET.get('nome')
+        if nome:
+            queryset = self.model.objects.filter(
+                nome__icontains=nome)
+            return queryset
+        else:
+            return super().get_queryset()
 
 
 class MarcaDetailView(LoginRequiredMixin, generic.detail.DetailView):

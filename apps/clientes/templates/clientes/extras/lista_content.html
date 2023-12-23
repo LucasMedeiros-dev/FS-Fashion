@@ -1,22 +1,14 @@
 <div class="container">
-    {% if fornecedores %}
     <!-- Search Form in a Card -->
+    {% if clientes %}
     <div class="card bg-light mb-3">
         <div class="card-header">
-            <form action="{% url 'fornecedor:lista' %}" method="get">
+            <form action="{% url 'clientes:lista' %}" method="get">
                 <div class="row">
-                    <!-- Dropdown occupying 1/4th of the bar -->
-                    <div class="col-3">
-                        <select class="form-control" name="tipo">
-                            <option value="nome">Nome</option>
-                            <option value="cnpj">CNPJ</option>
-                            <option value="empresa">Empresa</option>
-                        </select>
-                    </div>
                     <!-- Input field occupying the rest of the bar -->
-                    <div class="col-9">
+                    <div class="col">
                         <div class="input-group mb-0">
-                            <input type="text" class="form-control" placeholder="Buscar..." aria-label="Search" name="val">
+                            <input type="text" class="form-control" placeholder="Buscar..." aria-label="Search" name="nome">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="submit">Pesquisar</button>
                             </div>
@@ -27,15 +19,16 @@
         </div>
     </div>
     {% endif %}
+
     <div class="row">
-        {% for item in fornecedores %}
+        {% for item in clientes %}
         <!-- Each card taking up 4 columns -->
         <div class="col-md-4">
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">Nome: {{ item.nome }}</h5>
-                    <p class="card-text">Empresa: {{ item.empresa }}</p>
-                    <p class="card-text">CNPJ: {{ item.cnpj }}</p>
+                    <h5 class="card-title">Nome Completo: {{ item.nome }} {{ item.sobrenome }}</h5>
+                    <p class="card-text">CPF: {{ item.cpf }}</p>
+                    <p class="card-text">Nascimento: {{ item.nascimento }}</p>
                     <p class="card-text">Email: {{ item.email }}</p>
                     <p class="card-text">Telefone: {{ item.telefone }}</p>
                     {% if item.telefone_zap %}
@@ -43,10 +36,14 @@
                     {% else %}
                     <p class="card-text">Telefone Zap: Não</p>
                     {% endif %}
-                    <p class="card-text">Data de Cadastro: <br>{{ item.adicionado }}</p>
-                    <a href="{% url 'fornecedor:detalhe' pk=item.id %}" class="btn btn-primary">Abrir</a>
+                    <p class="card-text">Endereço: <br>{{ item.endereco }}</p>
+                    <p class="card-text">Data de Cadastro: <br>{{ item.cadastro }}</p>
+                    <a href="{% url 'clientes:detalhe' pk=item.id %}" class="btn btn-primary">Abrir</a>
                     {% if item.telefone_zap %}
                     <a href="https://api.whatsapp.com/send/?phone={{ item.telefone }}" class="btn btn-success" target="_blank" rel="noopener noreferrer">Whatsapp</a>
+                    {% endif %}
+                    {% if item.endereco %}
+                    <a href="https://www.google.com.br/maps/search/{{ item.endereco }}/" class="btn btn-info" target="_blank" rel="noopener noreferrer">Mapa</a>
                     {% endif %}
                 </div>
             </div>
@@ -55,14 +52,14 @@
         <div class="col-sm-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Cadastrar Fornecedor</h3>
+                    <h3 class="card-title">Cadastrar Cliente</h3>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title"><strong>Nenhum Fornecedor Cadastrado.<strong></h5>
+                    <h5 class="card-title"><strong>Nenhum Cliente Cadastrado.<strong></h5>
                 </div>
                 <div class="card-footer">
                     <a href={% url "dashboard" %} class="btn btn-danger" role="button">Voltar</a>
-                    <a href={% url "fornecedor:cadastro" %} class="btn btn-success" role="button">Cadastrar Fornecedor</a>
+                    <a href={% url "clientes:cadastro" %} class="btn btn-success" role="button">Cadastrar Cliente</a>
                 </div>
             </div>
         </div>

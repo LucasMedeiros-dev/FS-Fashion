@@ -1,0 +1,17 @@
+{% extends "adminlte/base.html" %}
+
+{% block page_title %}Fornecedores{% endblock page_title %}
+
+{% block content_header %}Fornecedores Clientes{% endblock content_header %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{% url "dashboard" %}">Início</a></li>
+    <li class="breadcrumb-item active">Clientes</li>
+{% endblock breadcrumb %}
+
+{% block custom_style %}
+{% endblock custom_style %}
+
+{% block content %}
+  {% include "clientes/extras/lista_content.html" %}
+{% endblock content %}

@@ -10,11 +10,13 @@ from . import models
 class CadastrarProd(LoginRequiredMixin, generic.FormView):
     template_name = "produtos/cadastro.html"
     form_class = forms.ProdutoCadastro
-    success_url = reverse_lazy('dashboard')
+    success_url = reverse_lazy('produto:cadastro')
 
     def form_valid(self, form) -> HttpResponse:
         nome = form.cleaned_data['nome']
         marca = form.cleaned_data['marca']
+        preco = form.cleaned_data['preco']
+        categoria = form.cleaned_data['categoria']
         qntd_max = form.cleaned_data['qntd_max']
         qntd_min = form.cleaned_data['qntd_min']
         qtd_tam_p = form.cleaned_data['qtd_tam_p']
@@ -22,7 +24,7 @@ class CadastrarProd(LoginRequiredMixin, generic.FormView):
         qtd_tam_g = form.cleaned_data['qtd_tam_g']
         qtd_tam_gg = form.cleaned_data['qtd_tam_gg']
         img_produto = form.cleaned_data['img_produto']
-        models.Produto.objects.get_or_create(nome=nome, marca=marca, qntd_max=qntd_max, qntd_min=qntd_min, qtd_tam_p=qtd_tam_p,
+        models.Produto.objects.get_or_create(nome=nome, marca=marca, categoria=categoria, preco=preco, qntd_max=qntd_max, qntd_min=qntd_min, qtd_tam_p=qtd_tam_p,
                                              qtd_tam_m=qtd_tam_m, qtd_tam_g=qtd_tam_g, qtd_tam_gg=qtd_tam_gg, img_produto=img_produto)
         return super().form_valid(form)
 
@@ -43,7 +45,11 @@ class EstoqueProd(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         query = self.request.GET.get('buscar')
         queryset = models.Produto.objects.all()
-        if query:
+        try:
+            query = int(query)
+        except:
+            query = None
+        if query is not None:
             queryset = queryset.filter(id=query)
         return queryset
 

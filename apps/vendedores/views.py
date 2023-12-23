@@ -9,6 +9,7 @@ from .models import Vendedor
 class VendedorListView(LoginRequiredMixin, ListView):
     model = Vendedor
     template_name = 'vendedores/lista.html'
+    context_object_name = 'vendedores'
 
 
 class VendedorDetailView(LoginRequiredMixin, DetailView):
@@ -20,6 +21,7 @@ class VendedorCreateView(LoginRequiredMixin, CreateView):
     model = Vendedor
     template_name = 'vendedores/cadastro.html'
     form_class = forms.VendedorForm
+    success_url = reverse_lazy('vendedor:lista')
 
 
 class VendedorUpdateView(LoginRequiredMixin, UpdateView):

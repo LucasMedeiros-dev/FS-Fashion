@@ -1,0 +1,25 @@
+<div class="card card-solid">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12">
+        <h3 class="my-3">{{ clientes.nome }} {{ clientes.sobrenome }} </h3>
+        <h5 class="card-title">Email: {{ clientes.email }}</h5>
+        <p class="card-text">CPF: {{ clientes.cpf }}</p>
+        <p class="card-text">Telefone: {{ clientes.telefone }}</p>
+        <p class="card-text">Endereço: {{ clientes.endereco }}</p>
+        {% if clientes.telefone_zap %}
+          <p class="card-text">Telefone Zap: Sim</p>
+        {% else %}
+          <p class="card-text">Telefone Zap: Não</p>
+        {% endif %}
+        <p class="card-text">Data de Cadastro: {{ clientes.cadastro }}</p>
+
+        <div class="btn-group" role="group" aria-label="Botões de acesso">
+          <a href="{% url 'clientes:atualizar' pk=clientes.id %}" class="btn btn-info">Editar</a>
+          <a href="{% url 'clientes:excluir' pk=clientes.id %}" class="btn btn-danger">Excluir</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.card-body -->
+</div>

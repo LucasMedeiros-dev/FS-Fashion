@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'apps.motoboys',
     'apps.produtos',
     'apps.vendedores',
+    'apps.clientes',
     #
     'crispy_bootstrap4',
     'crispy_forms',

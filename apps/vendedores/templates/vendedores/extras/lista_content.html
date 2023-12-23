@@ -2,8 +2,9 @@
     <div class="row">
         {% for item in vendedores %}
         <!-- Each card taking up 4 columns -->
-        <div class="col-md-4">
-            <div class="card mb-3">
+        <div class="col-md-3">
+            <div class="card mb-3 mr-3">
+                <img class="card-img-top" src="{{ item.foto.url }}" alt="Foto do Vendedor" style="object-fit: contain; height: 200px;">
                 <div class="card-body">
                     <h5 class="card-title">Nome: {{ item.nome }}</h5>
                     <p class="card-text">CPF: {{ item.cpf }}</p>

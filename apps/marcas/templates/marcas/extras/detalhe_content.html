@@ -9,16 +9,7 @@
         </div>
         <div class="col-12 col-sm-6">
           <h3 class="my-3">{{ marca.nome }}</h3>
-          {% if marca.fornecedores.count == 0 %}
-          <h4><strong>Nenhum Fornecedor Cadastrado.</strong></h4><br/>
-          {% endif %}
-          {% if marca.fornecedores.count == 1 %}
-            <h4>Fornecedor: <strong>{{ marca.fornecedores.first.empresa }}</strong></h4><br/>
-          {% else %}
-            {% for fornecedor in marca.fornecedores.all %}
-              <h4>Fornecedores: <strong>{{ fornecedor.empresa }}</strong></h4><br/>
-            {% endfor %}
-          {% endif %}
+          <h4>Fornecedor: {{ marca.fornecedores }}</h2>
 
           <div class="btn" role="group" aria-label="Botões de acesso">
           

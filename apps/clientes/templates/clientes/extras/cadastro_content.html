@@ -1,0 +1,59 @@
+<div class="card card-primary">
+  <div class="card-header">
+    <h3 class="card-title">Cadastrar Cliente</h3>
+  </div>
+  <!-- /.card-header -->
+  <!-- form start -->
+  <form action="{% url 'clientes:cadastro' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="card-body">
+      <div class="form-group">
+        <label for="{{ form.nome.id_for_label }}">{{ form.nome.label }}</label>
+        {{ form.nome }}
+      </div>
+      <div class="form-group">
+        <label for="{{ form.sobrenome.id_for_label }}">{{ form.sobrenome.label }}</label>
+        {{ form.sobrenome }}
+      </div>
+      <div class="form-group">
+        <label for="{{ form.cpf.id_for_label }}">{{ form.cpf.label }}</label>
+        {{ form.cpf }}
+      </div>
+      <div class="form-group">
+        <label for="{{ form.nascimento.id_for_label }}">{{ form.nascimento.label }}</label>
+        <div class="input-group date" id="datepicker">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+          </div>
+          {{ form.nascimento }}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+        {{ form.email }}
+      </div>
+      <div class="form-group">
+        <label for="{{ form.telefone.id_for_label }}">{{ form.telefone.label }}</label>
+        {{ form.telefone }}
+      </div>
+      <div class="form-group">
+        <label for="{{ form.telefone_zap.id_for_label }}">{{ form.telefone_zap.label }}</label>
+        {{ form.telefone_zap }}
+        {% if form.telefone_zap.errors %}
+            <div class="invalid-feedback">
+                {{ form.telefone_zap.errors.as_text }}
+            </div>
+        {% endif %}
+      </div>
+      <div class="form-group">
+        <label for="{{ form.endereco.id_for_label }}">{{ form.endereco.label }}</label>
+        {{ form.endereco }}
+      </div>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </div>
+  </form>
+</div>
+

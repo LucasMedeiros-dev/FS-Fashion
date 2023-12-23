@@ -1,15 +1,15 @@
 <div class="card card-solid">
     <div class="card-header bg-danger">
-      <h3 class="card-title danger">Excluir Vendedor</h3>
+      <h3 class="card-title danger">Excluir Cliente</h3>
     </div>
     <div class="card-body">
       <form method="post">
         {% csrf_token %}
-        <p> Tem certeza que deseja remover: <b>{{ vendedor.nome }}</b></p>
+        <p> Tem certeza que deseja remover: <b>{{ cliente.nome }} {{ cliente.sobrenome }}</b></p>
         <hr>
         <div aria-label="Button group with two buttons">
           <button type="submit" class="btn btn-danger">Remover</button>
-          <a href="{% url 'vendedor:detalhe' pk=vendedor.id %}" class="btn btn-primary">Voltar</a>
+          <a href="{% url 'clientes:detalhe' pk=cliente.id %}" class="btn btn-primary">Voltar</a>
         </div>
       </form>
     </div>

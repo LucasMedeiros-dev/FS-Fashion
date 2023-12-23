@@ -1,32 +1,23 @@
 <div class="card card-solid">
-    <div class="card-body">
-      <div class="row">
-        <div class="col-12 col-sm-6">
-          <h3 class="d-inline-block d-sm-none">{{ marca.nome }}</h3>
-          <div class="col-12">
-            <img src="{{ marca.img_marca.url }}" class="product-image" alt="Product Image" style="object-fit: contain; height: 425px;">
-          </div>
-        </div>
-        <div class="col-12 col-sm-6">
-          <h3 class="my-3">{{ marca.nome }}</h3>
-          {% if marca.fornecedores.count == 0 %}
-          <h4><strong>Nenhum Fornecedor Cadastrado.</strong></h4><br/>
-          {% endif %}
-          {% if marca.fornecedores.count == 1 %}
-            <h4>Fornecedor: <strong>{{ marca.fornecedores.first.empresa }}</strong></h4><br/>
-          {% else %}
-            {% for fornecedor in marca.fornecedores.all %}
-              <h4>Fornecedores: <strong>{{ fornecedor.empresa }}</strong></h4><br/>
-            {% endfor %}
-          {% endif %}
-
-          <div class="btn" role="group" aria-label="Botões de acesso">
-          
-          <a href="{% url 'marcas:atualizar' pk=marca.id %}" class="btn btn-info btn-lg">Editar</a>
-          <a href="{% url 'marcas:excluir' pk=marca.id %}" class="btn btn-danger btn-lg">Excluir</a>
-          </div>
-        </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-2">
+        <img src={{ vendedor.foto.url }} alt="Image" class="img-fluid">
+      </div>
+      <div class="col-10">
+        <h3 class="my-3">{{ vendedor.nome }}</h3>
+        <h5 class="card-title">CPF: {{ vendedor.cpf }}</h5>
+        <p class="card-text">Email: {{ vendedor.email }}</p>
+        <p class="card-text">Data de Cadastro: {{ vendedor.adicionado }}</p>
       </div>
     </div>
-    <!-- /.card-body -->
   </div>
+  <!-- /.card-body -->
+  <div class="card-footer">
+    <div class="btn-group" role="group" aria-label="Botões de acesso">
+      <a href="{% url 'vendedor:lista' %}" class="btn btn-primary ">Voltar</a>
+      <a href="{% url 'vendedor:atualizar' pk=vendedor.id %}" class="btn btn-info">Editar</a>
+      <a href="{% url 'vendedor:excluir' pk=vendedor.id %}" class="btn btn-danger">Excluir</a>
+    </div>
+  </div>
+</div>

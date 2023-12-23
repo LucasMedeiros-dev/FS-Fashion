@@ -15,13 +15,8 @@ class VendedorForm(ModelForm):
             'email': 'Email',
         }
         widgets = {
-            'nome': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Digite o nome'}),
-            'foto': forms.ClearableFileInput(attrs={'class': 'form-control', 'placeholder': 'Selecione uma foto'}),
-            'cpf': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Digite o CPF'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Digite o email'}),
+            'nome': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Digite o nome', 'id': 'nome'}),
+            'foto': forms.FileInput(attrs={'class': 'custom-file-input', 'id': 'foto'}),
+            'cpf': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Digite o CPF', 'id': 'cpf'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Digite o email', 'id': 'email'}),
         }
-
-    foto = forms.ImageField(
-        validators=[FileExtensionValidator(
-            allowed_extensions=['jpg', 'jpeg', 'png'])]
-    )

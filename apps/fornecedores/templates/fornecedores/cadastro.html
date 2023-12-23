@@ -15,3 +15,18 @@
     {% include "fornecedores/extras/cadastro_content.html" %}
 {% endblock content %}
 
+{% block scripts_multiple %}
+    <script>
+        document.getElementById("fornecedor_cnpj").addEventListener("input", function(e) {
+            var cnpj = e.target.value;
+            cnpj = cnpj.replace(/\D/g, '');
+            cnpj = cnpj.replace(/^(\d{2})(\d)/, '$1.$2');
+            cnpj = cnpj.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+            cnpj = cnpj.replace(/\.(\d{3})(\d)/, '.$1/$2');
+            cnpj = cnpj.replace(/(\d{4})(\d)/, '$1-$2');
+            e.target.value = cnpj;
+        });
+    </script>
+
+{% endblock scripts_multiple %}
+

@@ -114,6 +114,7 @@
             </ul>
         </li>
         <!-- Motoboys menu item -->
+        <!---->
         <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-motorcycle"></i>
@@ -138,8 +139,8 @@
                 </li>
             </ul>
         </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
+        <li class="nav-item {% open_app request 'clientes' %}">
+            <a href="#" class="nav-link {% active_app request 'clientes' %}">
                 <i class="nav-icon fas fa-user-circle"></i>
                 <p>
                     Clientes
@@ -149,13 +150,13 @@
             <ul class="nav nav-treeview">
                 <!-- Existing Motoboys sub-items go here -->
                 <li class="nav-item">
-                    <a href="{% url "marcas:lista" %}" class="nav-link {% active_view request 'marcas' 'lista' %}">
+                    <a href="{% url "clientes:lista" %}" class="nav-link {% active_view request 'clientes' 'lista' %}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Listar de Clientes</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{% url "marcas:cadastro" %}" class="nav-link {% active_view request 'marcas' 'cadastro' %}">
+                    <a href="{% url "clientes:cadastro" %}" class="nav-link {% active_view request 'clientes' 'cadastro' %}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Cadastrar Cliente</p>
                     </a>

@@ -6,10 +6,11 @@ from apps.produtos.models import Produto
 class ProdutoCadastro(forms.ModelForm):
     class Meta:
         model = Produto
-        fields = ['nome', 'marca', 'preco',
+        fields = ['nome', 'marca', 'preco', 'categoria',
                   'qntd_max', 'qntd_min', 'qtd_tam_p', 'qtd_tam_m', 'qtd_tam_g', 'qtd_tam_gg', 'img_produto']
         widgets = {
             'nome': forms.TextInput(attrs={'autofocus': True, 'class': 'form-control', 'placeholder': 'Digite o nome completo do produto'}),
+            'categoria': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Selecione a categoria'}),
             'marca': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Selecione a marca'}),
             'preco': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Digite o preço'}),
             'qntd_max': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Digite a quantidade máxima'}),
@@ -23,6 +24,7 @@ class ProdutoCadastro(forms.ModelForm):
 
         labels = {
             'nome': 'Nome',
+            'marca': 'Categoria',
             'marca': 'Marca',
             'preco': 'Preço',
             'qntd_max': 'Quantidade Máxima',
