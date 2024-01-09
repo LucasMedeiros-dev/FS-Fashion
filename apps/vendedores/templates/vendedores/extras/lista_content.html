@@ -11,6 +11,7 @@
                     <p class="card-text">Email: {{ item.email }}</p>
                     <p class="card-text">Data de Cadastro: {{ item.adicionado }}</p>
                     <a href="{% url 'vendedor:detalhe' pk=item.id %}" class="btn btn-primary">Abrir</a>
+                    <a href="{% url 'vendedor:senha' pk=item.id_usuario %}" class="btn btn-primary">Alterar Senha</a>
                 </div>
             </div>
         </div>

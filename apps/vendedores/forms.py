@@ -1,7 +1,8 @@
-from django import forms
 from django.core.validators import FileExtensionValidator
+from django.contrib.auth.forms import SetPasswordForm
 from django.forms import ModelForm
 from .models import Vendedor
+from django import forms
 
 
 class VendedorForm(ModelForm):
@@ -20,3 +21,8 @@ class VendedorForm(ModelForm):
             'cpf': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Digite o CPF', 'id': 'cpf'}),
             'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Digite o email', 'id': 'email'}),
         }
+
+
+class MudarSenhaForm(SetPasswordForm):
+    def __init__(self, *args, **kwargs):
+        super(MudarSenhaForm, self).__init__(*args, **kwargs)

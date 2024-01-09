@@ -14,3 +14,11 @@
     {% include "produtos/extras/cadastro_content.html" %}
 {% endblock content %}
 
+{% block scripts_multiple %}
+<script>
+document.getElementById('id_img_produto').addEventListener('change', function(e) {
+    var fileName = e.target.files[0].name;
+    var nextSibling = e.target.nextElementSibling;
+    nextSibling.innerText = fileName;
+});</script
+{% endblock scripts_multiple %}

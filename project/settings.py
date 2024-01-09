@@ -26,26 +26,26 @@ SECRET_KEY = 'django-insecure-ar@p)@u-uj8qk03+9$p_)-bf#)qkq6n%cb8ot^mu2(l%*p^o6k
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+LOCAL = True
 ALLOWED_HOSTS = ['lojaodamoda.pbdevs.com.br', '0.0.0.0', '127.0.0.1']
 
-# SSL
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+if not LOCAL:
+    # SSL
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# Add your domain to `ALLOWED_HOSTS`
-ALLOWED_HOSTS = ['lojaodamoda.pbdevs.com.br']
+    # Add your domain to `ALLOWED_HOSTS`
+    ALLOWED_HOSTS = ['lojaodamoda.pbdevs.com.br']
 
-# If using CSRF protection, add your domain to `CSRF_TRUSTED_ORIGINS`
-CSRF_TRUSTED_ORIGINS = ['https://lojaodamoda.pbdevs.com.br']
+    # If using CSRF protection, add your domain to `CSRF_TRUSTED_ORIGINS`
+    CSRF_TRUSTED_ORIGINS = ['https://lojaodamoda.pbdevs.com.br']
 
+    # Ensure CSRF and session cookies are sent over HTTPS only
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
 
-# Ensure CSRF and session cookies are sent over HTTPS only
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-
-# X-Frame-Options to prevent clickjacking
-X_FRAME_OPTIONS = 'DENY'
-# FIM SSL
+    # X-Frame-Options to prevent clickjacking
+    X_FRAME_OPTIONS = 'DENY'
+    # FIM SSL
 
 # Application definition
 
@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap4',
     'crispy_forms',
     'localflavor',
+    'whitenoise.runserver_nostatic',
     'core',
 ]
 
@@ -137,7 +138,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Recife'
 
 USE_I18N = True
 

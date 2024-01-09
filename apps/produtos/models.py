@@ -48,7 +48,7 @@ class Produto(models.Model):
     qtd_tam_gg = models.PositiveIntegerField()
     preco = models.DecimalField(
         max_digits=5, decimal_places=2, validators=[MinValueValidator(0)])
-    img_produto = models.ImageField(upload_to="static/")
+    img_produto = models.ImageField(upload_to="static/produtos")
     criado = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

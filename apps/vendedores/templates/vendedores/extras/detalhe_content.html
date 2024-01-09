@@ -14,9 +14,10 @@
   </div>
   <!-- /.card-body -->
   <div class="card-footer">
-    <div class="btn-group" role="group" aria-label="Botões de acesso">
+    <div class="btn-group" role="group" aria-label="Botões de acesso">  
       <a href="{% url 'vendedor:lista' %}" class="btn btn-primary ">Voltar</a>
       <a href="{% url 'vendedor:atualizar' pk=vendedor.id %}" class="btn btn-info">Editar</a>
+      <a href="{% url 'vendedor:senha' pk=vendedor.id_usuario %}" class="btn btn-secondary">Alterar Senha</a>
       <a href="{% url 'vendedor:excluir' pk=vendedor.id %}" class="btn btn-danger">Excluir</a>
     </div>
   </div>
