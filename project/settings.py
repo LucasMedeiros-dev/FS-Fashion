@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'apps.produtos',
     'apps.vendedores',
     'apps.clientes',
+    'apps.carrinho',
     #
     'crispy_bootstrap4',
     'crispy_forms',
@@ -95,6 +96,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'apps.carrinho.context.carrinho',
             ],
         },
     },
