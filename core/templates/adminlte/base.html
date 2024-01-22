@@ -63,7 +63,7 @@
           
           {% for item in carrinho.itens.all %}
             <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> {{ item.produto.nome }} - {{ item.quantidade }}x
+              <i class="fas fa-tshirt mr-2"></i> {{ item.produto.nome }} - {{ item.quantidade }}x
               <span class="float-right text-muted text-sm">{{ item.get_cost }}</span>
             </a>
             <div class="dropdown-divider"></div>
