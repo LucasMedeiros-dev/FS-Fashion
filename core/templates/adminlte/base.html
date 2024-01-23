@@ -5,6 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href={% static "fsashion.png" %}>
   <title>FS Fashion | {% block page_title %}{% endblock page_title %}</title>
 
   <!-- Google Font: Source Sans Pro -->
@@ -60,14 +61,28 @@
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <span class="dropdown-item dropdown-header">Lista de Produtos</span>
           <div class="dropdown-divider"></div>
-          
+      
           {% for item in carrinho.itens.all %}
             <a href="#" class="dropdown-item">
               <i class="fas fa-tshirt mr-2"></i> {{ item.produto.nome }} - {{ item.quantidade }}x
               <span class="float-right text-muted text-sm">{{ item.get_cost }}</span>
             </a>
             <div class="dropdown-divider"></div>
+          {% empty %}
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-times mr-2"></i> Nenhum produto no carrinho
+              <span class="float-right text-muted text-sm"></span>
+            </a>
+            <div class="dropdown-divider"></div>
           {% endfor %}
+
+          {% if carrinho.itens.all %}
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-tags mr-2"></i> Valor Total do Carrinho
+            <span class="float-right text-sm text-muted">{{ carrinho.get_total }}</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          {% endif %}
           
           <a href="{% url 'carrinho:detalhe' %}" class="dropdown-item dropdown-footer">Ver Carrinho</a>
         </div>

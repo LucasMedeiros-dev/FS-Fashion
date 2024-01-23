@@ -76,6 +76,7 @@
           <div class="btn" role="group" aria-label="Botões de acesso">
           <a href="{% url 'produto:atualizar' pk=produto.id %}" class="btn btn-success btn-lg">Vender</a>
           <a href="{% url 'produto:atualizar' pk=produto.id %}" class="btn btn-info btn-lg">Editar</a>
+          <a href={{ produto.etiqueta.url }} class="btn btn-primary btn-lg">Emitir Etiqueta</a>
           <a href="{% url 'produto:excluir' pk=produto.id %}" class="btn btn-danger btn-lg">Excluir</a>
           </div>
         </div>

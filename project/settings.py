@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-ar@p)@u-uj8qk03+9$p_)-bf#)qkq6n%cb8ot^mu2(l%*p^o6k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 LOCAL = True
-ALLOWED_HOSTS = ['lojaodamoda.pbdevs.com.br', '0.0.0.0', '127.0.0.1']
+ALLOWED_HOSTS = ['lojaodamoda.pbdevs.com.br',
+                 '0.0.0.0', '127.0.0.1', '192.168.0.2']
 
 if not LOCAL:
     # SSL
@@ -68,7 +69,6 @@ INSTALLED_APPS = [
     'crispy_bootstrap4',
     'crispy_forms',
     'localflavor',
-    'whitenoise.runserver_nostatic',
     'core',
 ]
 
@@ -151,13 +151,12 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-STATICFILES_DIRS = [
-    BASE_DIR / "project" / "static",
-]
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

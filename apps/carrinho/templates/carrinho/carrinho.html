@@ -1,12 +1,18 @@
 {% extends "adminlte/base.html" %}
 
+{% block page_title %}Carrinho de Compras{% endblock page_title %}
 
-{% block page_title %}Vendas{% endblock page_title %}
-
-{% block content_header %}Vendas{% endblock content_header %}
+{% block content_header %}Carrinho de Compras{% endblock content_header %}
 
 
 {% block breadcrumb %}
     <li class="breadcrumb-item"><a href="{% url "dashboard" %}">Início</a></li>
-    <li class="breadcrumb-item active">Atualização De Clientes</li>
+    <li class="breadcrumb-item">Carrinho</a></li>
 {% endblock breadcrumb %}
+
+{% block custom_style %}
+{% endblock custom_style %}
+
+{% block content %}
+  {% include "carrinho/extras/detalhe_content.html" %}
+{% endblock content %}

@@ -1,7 +1,9 @@
 from django.db import models
 from apps.marcas.models import Marca
+from django.core.files import File  # Import File
+import os  # Import os
 from django.core.validators import MinValueValidator
-
+from .funcoes.gerar_qrcode import criar_etiqueta_multiplo
 
 # Create your models here.
 CATEGORIAS_ROUPAS_CHOICES = [
@@ -35,6 +37,7 @@ CATEGORIAS_ROUPAS_CHOICES = [
 class Produto(models.Model):
     nome = models.CharField(max_length=120)
     marca = models.ForeignKey(Marca, on_delete=models.CASCADE)
+    etiqueta = models.ImageField(upload_to="etiquetas/", blank=True)
     categoria = models.CharField(
         max_length=50,
         choices=CATEGORIAS_ROUPAS_CHOICES,
@@ -48,8 +51,29 @@ class Produto(models.Model):
     qtd_tam_gg = models.PositiveIntegerField()
     preco = models.DecimalField(
         max_digits=5, decimal_places=2, validators=[MinValueValidator(0)])
-    img_produto = models.ImageField(upload_to="static/produtos")
+    img_produto = models.ImageField(upload_to="produtos/")
     criado = models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        # Logic to handle the etiqueta image
+        # Check if this is a new instance (pk is None when the instance is not saved yet)
+        if not self.pk:
+
+            criar_etiqueta_multiplo(self.nome, self.preco, self.pk)
+            # Path to your generated image
+            image_path = 'etiquetas_latest.png'
+
+            # Open the image file in read-binary mode
+            with open(image_path, 'rb') as image_file:
+                # Wrap the image file in a Django File object
+                django_file = File(image_file)
+
+                # Assign the image file to the etiqueta field
+                self.etiqueta.save(os.path.basename(
+                    image_path), django_file, save=False)
+
+        # Call the parent's save method
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.nome} {self.marca}"

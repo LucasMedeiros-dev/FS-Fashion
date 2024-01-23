@@ -19,7 +19,7 @@ class Vendedor(models.Model):
     id_usuario = models.PositiveIntegerField(null=True, blank=True)
     nome = models.CharField(max_length=120)
     foto = models.ImageField(
-        upload_to="static/vendedores/")
+        upload_to="vendedores/")
     cpf = BRCPFField(unique=True)
     email = models.EmailField(max_length=254, unique=True)
     adicionado = models.DateTimeField(auto_now_add=True)

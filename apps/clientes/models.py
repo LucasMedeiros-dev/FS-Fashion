@@ -7,10 +7,11 @@ from django.core.validators import RegexValidator
 
 class BrazilianCellPhoneField(models.CharField):
     def __init__(self, *args, **kwargs):
-        kwargs['max_length'] = 11
+        kwargs['max_length'] = 13
         kwargs['validators'] = [
             RegexValidator(
-                regex=r'^0?\d{2}\s?9\d{4}\s?-?\d{4}$',
+                # Updated regex pattern
+                regex=r'^(55\d{11})|(0?\d{2}\s?9\d{4}\s?-?\d{4})$',
                 message='Insira um telefone válido',
                 code='telefone_invalido'
             )

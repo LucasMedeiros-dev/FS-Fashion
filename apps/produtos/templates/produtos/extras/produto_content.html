@@ -31,6 +31,7 @@
               Preço: <b>R$ {{ item.preco }}</b><br/>
             </p>   
             <a href="{% url "produto:detalhe" pk=item.id %}" class="btn btn-primary">Abrir</a>
+            <a href="{% url "carrinho:adicionar" produto_id=item.id %}" class="btn btn-success">Adicionar ao Carrinho</a>
           </div>
         </div>
       </div>
