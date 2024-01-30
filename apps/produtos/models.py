@@ -1,7 +1,8 @@
 from django.db import models
 from apps.marcas.models import Marca
-from django.core.files import File  # Import File
-import os  # Import os
+from django.core.files import File
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.core.validators import MinValueValidator
 from .funcoes.gerar_qrcode import criar_etiqueta_multiplo
 
@@ -54,26 +55,26 @@ class Produto(models.Model):
     img_produto = models.ImageField(upload_to="produtos/")
     criado = models.DateTimeField(auto_now_add=True)
 
-    def save(self, *args, **kwargs):
-        # Logic to handle the etiqueta image
-        # Check if this is a new instance (pk is None when the instance is not saved yet)
-        if not self.pk:
 
-            criar_etiqueta_multiplo(self.nome, self.preco, self.pk)
-            # Path to your generated image
-            image_path = 'etiquetas_latest.png'
+@receiver(post_save, sender=Produto)
+def generate_etiqueta(sender, instance, created, **kwargs):
+    if created:  # Check if the instance is newly created
+        # Generate etiquetas based on the instance's data
+        criar_etiqueta_multiplo(instance.nome, instance.preco, instance.pk)
 
-            # Open the image file in read-binary mode
-            with open(image_path, 'rb') as image_file:
-                # Wrap the image file in a Django File object
-                django_file = File(image_file)
+        # Name of the etiqueta file based on the instance's PK
+        filename = f"etiquetas_latest.png"
 
-                # Assign the image file to the etiqueta field
-                self.etiqueta.save(os.path.basename(
-                    image_path), django_file, save=False)
+        # Open the image file in read-binary mode
+        with open(filename, 'rb') as image_file:
+            # Create a Django File object from the image file
+            django_file = File(image_file)
 
-        # Call the parent's save method
-        super().save(*args, **kwargs)
+            # Assign the image file to the etiqueta field
+            instance.etiqueta = django_file
+            instance.save()  # Save the instance to associate the etiqueta field
+
+# Connect the signal handler in your app's ready() function or in a signals.py file
 
     def __str__(self):
         return f"{self.nome} {self.marca}"

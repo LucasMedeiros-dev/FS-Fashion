@@ -23,10 +23,18 @@ class Carrinho(models.Model):
 
 
 class ItemCarrinho(models.Model):
+    TAMANHO_CHOICES = [
+        ('P', 'p'),
+        ('M', 'm'),
+        ('G', 'g'),
+        ('GG', 'gg'),
+    ]
+
     carrinho = models.ForeignKey(
         Carrinho, related_name='itens', on_delete=models.CASCADE)
     produto = models.ForeignKey(
         Produto, related_name='itens_carrinho', on_delete=models.CASCADE)
+    tamanho = models.CharField(max_length=2, choices=TAMANHO_CHOICES)
     preco = models.DecimalField(max_digits=10, decimal_places=2)
     quantidade = models.PositiveIntegerField(default=1)
 
