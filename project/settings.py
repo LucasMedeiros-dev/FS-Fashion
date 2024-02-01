@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     'apps.vendedores',
     'apps.clientes',
     'apps.carrinho',
+    'apps.frente_loja',
     #
     'crispy_bootstrap4',
     'crispy_forms',

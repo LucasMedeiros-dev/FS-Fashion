@@ -1,10 +1,10 @@
 <div class="card card-primary">
   <div class="card-header">
-    <h3 class="card-title">Ataulizar Produtos</h3>
+    <h3 class="card-title">Cadastrar Produtos</h3>
   </div>
   <!-- /.card-header -->
   <!-- form start -->
-  <form action="{% url 'produto:atualizar' pk=produto.id %}" method="post" enctype="multipart/form-data">
+  <form action="{% url "produto:atualizar" pk=produto.id %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="card-body">
       <div class="form-group">
@@ -12,8 +12,16 @@
         {{ form.nome }}
       </div>
       <div class="form-group">
+        <label for="prod_categoria">{{ form.categoria.label_tag }}</label>
+        {{ form.categoria }}
+      </div>
+      <div class="form-group">
         <label for="prod_marca">{{ form.marca.label_tag }}</label>
         {{ form.marca }}
+      </div>
+      <div class="form-group">
+        <label for="prod_marca">{{ form.preco.label_tag }}</label>
+        {{ form.preco }}
       </div>
       <div class="form-group">
         <label for="prod_image">{{ form.img_produto.label_tag }}</label>

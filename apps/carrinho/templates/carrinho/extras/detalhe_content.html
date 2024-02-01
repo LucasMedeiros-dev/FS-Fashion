@@ -38,12 +38,13 @@
                                 <td class="border-0 align-middle"><strong>{{ item.quantidade }}</strong></td>
                                 <td class="border-0 align-middle"><strong>{{ item.tamanho }}</strong></td>
                                 <td class="border-0 align-middle">
-                                    <a href={% url "carrinho:remover" item_id=item.id %} class="text-dark"><i class="fa fa-trash"></i></a>
+                                    <a href={% url "carrinho:remover" item_id=item.id %} class="text-dark"><i class="fa fa-trash"></i></a>                                        
                                 </td>
                             </tr>
                         {% endfor %}
                     </tbody>
                 </table>
+                <div class="border-0 bg-light ">{% for message in messages %}{{ message }}{% endfor %}</div>
             </div>
             <!-- End -->
 
@@ -59,7 +60,9 @@
                     <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
                         <h5 class="font-weight-bold">R$ {{ carrinho.get_total }}</h5>
                     </li>
-                </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Prosseguir para o checkout</a>
+                    <form action={% url "carrinho:detalhe" %} method="post">
+                        {% csrf_token %}
+                    </ul><button type="submit" class="btn btn-dark rounded-pill py-2 btn-block">Finalizar Compra</button>
             </div>
         </div>
     </div>

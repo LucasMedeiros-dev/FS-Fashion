@@ -1,0 +1,30 @@
+{% extends "adminlte/base.html" %}
+{% load static %}
+
+{% block page_title %}Produtos{% endblock page_title %}
+
+{% block content_header %}Produtos{% endblock content_header %}
+
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href='/'>Início</a></li>
+<li class="breadcrumb-item active">Estoque</li>
+{% endblock breadcrumb %}
+
+{% block custom_style %}
+<style>
+    /* Custom style to make btn-sm even smaller */
+    .btn-sm-smaller {
+        padding: 0.10rem 0.30rem;
+        font-size: 0.75rem;
+        /* Adjust the font size as needed */
+        line-height: 1.5;
+        border-radius: 0.2rem;
+        /* Adjust the border-radius as needed */
+    }
+</style>
+{% endblock custom_style %}
+
+{% block content %}
+{% include "frente_loja/extras/frente_loja_content.html" %}
+{% endblock content %}

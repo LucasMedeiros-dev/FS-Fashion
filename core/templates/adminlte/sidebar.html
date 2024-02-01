@@ -14,6 +14,28 @@
         <!-- Other Produtos sub-items go here -->
 
         <!-- Produtos menu item -->
+        <li class="nav-item {% open_app request 'vendas' %} {% open_app request 'carrinho' %}">
+            <a href="#" class="nav-link {% active_app request 'vendas' %} {% active_app request 'carrinho' %}">
+                <i class="nav-icon fas fa-cash-register"></i>
+                <p>
+                    Frente de Loja
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <!-- Existing Produtos sub-items go here -->
+                <li class="nav-item">
+                    <a href="{% url "vendas:vender" %}" class="nav-link {% active_view request 'vendas' 'vender' %}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Vender</p>
+                    </a>
+                    <a href="{% url "carrinho:detalhe" %}" class="nav-link {% active_view request 'carrinho' 'detalhe' %}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Carrinho</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
         <li class="nav-item {% open_app request 'produto' %}">
             <a href="#" class="nav-link {% active_app request 'produto' %}">
                 <i class="nav-icon fas fa-tshirt"></i>

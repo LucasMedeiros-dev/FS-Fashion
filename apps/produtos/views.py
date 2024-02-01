@@ -35,6 +35,15 @@ class AtualizarProd(LoginRequiredMixin, generic.UpdateView):
     success_url = reverse_lazy('produto:estoque')
     model = models.Produto
 
+    def form_valid(self, form):
+        print("TAVA VALIDO")
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        # printa os errors
+        print(form.errors)
+        return super().form_invalid(form)
+
 
 class EstoqueProd(LoginRequiredMixin, generic.ListView):
     paginate_by = 10

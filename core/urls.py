@@ -12,4 +12,5 @@ urlpatterns = [
     path('vendedor/', include('apps.vendedores.urls'), name="vendedor"),
     path('clientes/', include('apps.clientes.urls'), name="cliente"),
     path('carrinho/', include('apps.carrinho.urls'), name="carrinho"),
+    path('vendas/', include('apps.frente_loja.urls'), name="vendas"),
 ]
